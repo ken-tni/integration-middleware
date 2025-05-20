@@ -1,0 +1,20 @@
+{
+  "adapter_name": "cloud_erp",
+  "class_path": "app.adapters.cloud_erp.adapter.CloudERPAdapter",
+  "client_class_path": "app.adapters.cloud_erp.client.CloudERPClient",
+  "base_url": "https://erp.vanishpro.com.au",
+  "api_key": "7238530cdd32735",
+  "api_secret": "b3f192c025c269a",
+  "entity_map": {
+    "customer": "Customer",
+    "product": "Product",
+    "order": "Order"
+  },
+  "endpoints": {
+    "get_by_id": "/api/resource/{entity_type}/{entity_id}",
+    "search": "/api/resource/{entity_type}",
+    "create": "/api/resource/{entity_type}",
+    "update": "/api/resource/{entity_type}/{entity_id}",
+    "delete": "/api/resource/{entity_type}/{entity_id}"
+  }
+} 

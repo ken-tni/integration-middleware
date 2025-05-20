@@ -1,9 +1,14 @@
+print("main.py is running")
 import uvicorn
 from fastapi import FastAPI
 from app.api.v1.api import api_router
 from app.config.settings import settings
 from app.utils.logging import setup_logging
 from app.utils.exception_handlers import setup_exception_handlers
+
+setup_logging()  # Ensure logging is set up first
+from app.core.adapter_factory import adapter_factory  # Import after logging
+
 
 def create_application() -> FastAPI:
     """Create and configure the FastAPI application."""
@@ -14,9 +19,6 @@ def create_application() -> FastAPI:
         docs_url="/docs",
         redoc_url="/redoc",
     )
-    
-    # Setup logging
-    setup_logging()
     
     # Setup exception handlers
     setup_exception_handlers(app)

@@ -56,6 +56,14 @@ The middleware follows a clean architecture approach:
    PORT=8000
    LOG_LEVEL=INFO
    
+   # Default adapter configuration
+   DEFAULT_ADAPTER=erp_next
+   # Entity-specific adapter overrides (optional)
+   CUSTOMER_ADAPTER=cloud_erp
+   PRODUCT_ADAPTER=erp_next
+   QUOTATION_ADAPTER=erp_next
+   INVOICE_ADAPTER=cloud_erp
+   
    # System A (ERPNext) settings
    SYSTEM_A_BASE_URL=https://your-erp-instance.com
    SYSTEM_A_API_KEY=your_api_key
@@ -93,6 +101,8 @@ The API follows RESTful conventions and includes the following endpoints:
 - `POST /api/v1/customers` - Create a new customer
 - `PUT /api/v1/customers/{customer_id}` - Update a customer
 - `DELETE /api/v1/customers/{customer_id}` - Delete a customer
+
+All endpoints accept an optional `adapter_name` query parameter to override the default adapter.
 
 ### Products
 

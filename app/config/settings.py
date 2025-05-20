@@ -1,9 +1,18 @@
 import os
+from typing import Optional
 from pydantic import BaseModel
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
+
+# API settings
+DEFAULT_ADAPTER = os.environ.get("DEFAULT_ADAPTER", "erp_next")
+
+# Define a function to get a setting with a default value
+def get_setting(key: str, default: Optional[str] = None) -> str:
+    """Get a setting from environment variables with a default fallback."""
+    return os.environ.get(key, default)
 
 class Settings(BaseModel):
     """Application settings."""

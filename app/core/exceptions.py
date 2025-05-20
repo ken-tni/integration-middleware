@@ -36,6 +36,22 @@ class ConfigurationError(MiddlewareError):
     pass
 
 
+class ConversionError(MiddlewareError):
+    """Exception raised when data conversion fails."""
+    def __init__(self, message: str = "Error converting data", 
+                 source_system: str = None, target_format: str = None):
+        self.source_system = source_system
+        self.target_format = target_format
+        details = []
+        if source_system:
+            details.append(f"source: {source_system}")
+        if target_format:
+            details.append(f"target format: {target_format}")
+        
+        message_with_details = f"{message} ({', '.join(details)})" if details else message
+        super().__init__(message_with_details)
+
+
 class AuthenticationError(AdapterError):
     """Exception raised when authentication with an external system fails."""
     def __init__(self, message: str = "Authentication failed", source_system: str = None):

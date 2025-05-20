@@ -18,6 +18,7 @@ class ERPNextClient:
     
     def __init__(
         self,
+        config: Optional[Dict[str, Any]] = None,
         base_url: Optional[str] = None,
         api_key: Optional[str] = None,
         api_secret: Optional[str] = None,
@@ -25,13 +26,15 @@ class ERPNextClient:
         """Initialize the ERPNext client.
         
         Args:
+            config: Adapter configuration dictionary
             base_url: The base URL of the ERPNext API
             api_key: The API key for authentication
             api_secret: The API secret for authentication
         """
-        self.base_url = base_url or settings.SYSTEM_A_BASE_URL
-        self.api_key = api_key or settings.SYSTEM_A_API_KEY
-        self.api_secret = api_secret or settings.SYSTEM_A_API_SECRET
+        config = config or {}
+        self.base_url = base_url or config.get("base_url") or settings.SYSTEM_A_BASE_URL
+        self.api_key = api_key or config.get("api_key") or settings.SYSTEM_A_API_KEY
+        self.api_secret = api_secret or config.get("api_secret") or settings.SYSTEM_A_API_SECRET
         
         if not self.base_url:
             raise ValueError("ERPNext base URL is required")

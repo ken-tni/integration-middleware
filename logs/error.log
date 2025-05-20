@@ -227,3 +227,593 @@ transaction_date
   Input should be a valid date [type=date_type, input_value=None, input_type=NoneType]
     For further information visit https://errors.pydantic.dev/2.4/v/date_type
 2025-05-18 17:54:44 | ERROR    | app.api.v1.endpoints.quotations:list_quotations:68 - Error listing quotations: Failed to search for quotation (System: ERPNext)
+2025-05-19 23:40:23 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-19 23:44:42 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-19 23:45:31 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-19 23:47:47 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-19 23:48:04 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-19 23:49:20 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-19 23:51:24 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-19 23:57:13 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-19 23:59:04 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-20 00:00:28 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-20 00:02:16 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-20 00:03:50 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-20 00:03:54 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-20 00:04:37 | ERROR    | app.utils.exception_handlers:configuration_exception_handler:93 - Configuration error: Adapter not found: erp_next
+2025-05-20 17:48:46 | ERROR    | app.utils.exception_handlers:unhandled_exception_handler:111 - Unhandled exception: 'CloudERPAdapter' object has no attribute '_get_erp_entity_type'
+Traceback (most recent call last):
+
+  File "E:\Work\Shahab\Dev\ERPNext Copilot\integration-middleware\main.py", line 34, in <module>
+    uvicorn.run(
+    │       └ <function run at 0x0000019BBA16DBC0>
+    └ <module 'uvicorn' from 'C:\\Users\\pouri\\AppData\\Roaming\\Python\\Python312\\site-packages\\uvicorn\\__init__.py'>
+
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\uvicorn\main.py", line 587, in run
+    server.run()
+    │      └ <function Server.run at 0x0000019BBA1C5300>
+    └ <uvicorn.server.Server object at 0x0000019BBC391D30>
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\uvicorn\server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ None
+           │       │   │    └ <function Server.serve at 0x0000019BBA1C53A0>
+           │       │   └ <uvicorn.server.Server object at 0x0000019BBC391D30>
+           │       └ <function run at 0x0000019BB95962A0>
+           └ <module 'asyncio' from 'C:\\Python312\\Lib\\asyncio\\__init__.py'>
+  File "C:\Python312\Lib\asyncio\runners.py", line 194, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x0000019BBA0A1940>
+           │      └ <function Runner.run at 0x0000019BB96E9580>
+           └ <asyncio.runners.Runner object at 0x0000019BBC2672F0>
+  File "C:\Python312\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\uvi...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x0000019BB96F31A0>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x0000019BBC2672F0>
+  File "C:\Python312\Lib\asyncio\base_events.py", line 674, in run_until_complete
+    self.run_forever()
+    │    └ <function ProactorEventLoop.run_forever at 0x0000019BB9807100>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Python312\Lib\asyncio\windows_events.py", line 322, in run_forever
+    super().run_forever()
+  File "C:\Python312\Lib\asyncio\base_events.py", line 641, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x0000019BB96E8F40>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Python312\Lib\asyncio\base_events.py", line 1986, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x0000019BB9597100>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x0000019BBC55FC40>()>
+  File "C:\Python312\Lib\asyncio\events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <_asyncio.TaskStepMethWrapper object at 0x0000019BBC55FC40>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <_asyncio.TaskStepMethWrapper object at 0x0000019BBC55FC40>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <_asyncio.TaskStepMethWrapper object at 0x0000019BBC55FC40>()>
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\uvicorn\protocols\http\httptools_impl.py", line 426, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x0000019BBBC9D820>
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\uvicorn\middleware\proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019BBC...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x0000019BBBF0AB40>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x0000019BBBC9D820>
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\fastapi\applications.py", line 1115, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019BBC...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\starlette\applications.py", line 122, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019BBC...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000019BBC350560>
+          └ <fastapi.applications.FastAPI object at 0x0000019BBBF0AB40>
+> File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\starlette\middleware\errors.py", line 162, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x0000019BBC57D580>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000019BBC4FCBC0>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x0000019BBC350560>
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\starlette\middleware\exceptions.py", line 79, in __call__
+    raise exc
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\starlette\middleware\exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x0000019BBC57DA80>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x0000019BBC4444D0>
+          └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x0000019BBC4FCBC0>
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\fastapi\middleware\asyncexitstack.py", line 20, in __call__
+    raise e
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\fastapi\middleware\asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x0000019BBC57DA80>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x0000019BBC2E74A0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x0000019BBC4444D0>
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\starlette\routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x0000019BBC57DA80>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │     └ <function Route.handle at 0x0000019BBBA42E80>
+          └ APIRoute(path='/api/v1/quotations', name='list_quotations', methods=['GET'])
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\starlette\routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x0000019BBC57DA80>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x0000019...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 8000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x0000019BBC4D6F20>
+          └ APIRoute(path='/api/v1/quotations', name='list_quotations', methods=['GET'])
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\starlette\routing.py", line 66, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x0000019BBC55F770>
+                     └ <function get_request_handler.<locals>.app at 0x0000019BBC4D6E80>
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\fastapi\routing.py", line 274, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x0000019BBBA43F60>
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\fastapi\routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'page': 1, 'page_size': 100, 'customer_name': None, 'status_filter': None, 'from_date': None, 'to_date': None, 'adapter_name...
+                 │         └ <function list_quotations at 0x0000019BBC232DE0>
+                 └ <fastapi.dependencies.models.Dependant object at 0x0000019BBC4CC6B0>
+
+  File "E:\Work\Shahab\Dev\ERPNext Copilot\integration-middleware\app\api\v1\endpoints\quotations.py", line 65, in list_quotations
+    result = await adapter.search("quotation", filters, page, page_size)
+                   │       │                   │        │     └ 100
+                   │       │                   │        └ 1
+                   │       │                   └ {}
+                   │       └ <function CloudERPAdapter.search at 0x0000019BBC092F20>
+                   └ <app.adapters.cloud_erp.adapter.CloudERPAdapter object at 0x0000019BBC55FDD0>
+
+  File "E:\Work\Shahab\Dev\ERPNext Copilot\integration-middleware\app\adapters\cloud_erp\adapter.py", line 43, in search
+    erp_entity_type = self._get_erp_entity_type(entity_type)
+                      │                         └ 'quotation'
+                      └ <app.adapters.cloud_erp.adapter.CloudERPAdapter object at 0x0000019BBC55FDD0>
+
+AttributeError: 'CloudERPAdapter' object has no attribute '_get_erp_entity_type'
+2025-05-20 22:27:14 | ERROR    | app.adapters.erp_next.client:_request:136 - HTTP error: Server error '500 INTERNAL SERVER ERROR' for url 'https://erp.vanishpro.com.au/api/resource/Customer?filters=%5B%27customer_name%27%2C%20%27%3D%27%2C%20%27Premier%20Floor%27%5D&limit_start=0&limit_page_length=100&fields=%5B%22%2A%22%5D'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+2025-05-20 22:27:14 | ERROR    | app.adapters.erp_next.adapter:search:152 - Error searching for customer: isinstance() arg 2 must be a type, a tuple of types, or a union
+2025-05-20 22:27:14 | ERROR    | app.api.v1.endpoints.base_endpoint:list_entities_with_filters:146 - Error listing customers: Failed to search for customer (System: ERPNext)
+2025-05-20 22:28:50 | ERROR    | app.core.conversions.converter_factory:get_converter:41 - No converter found for entity type: quotation
+2025-05-20 22:28:50 | ERROR    | app.adapters.erp_next.adapter:search:152 - Error searching for quotation: No converter found for entity type: quotation
+2025-05-20 22:28:50 | ERROR    | app.api.v1.endpoints.base_endpoint:list_entities_with_filters:146 - Error listing quotations: Failed to search for quotation (System: ERPNext)
+2025-05-20 22:29:37 | ERROR    | app.core.conversions.converter_factory:get_converter:41 - No converter found for entity type: quotation
+2025-05-20 22:29:37 | ERROR    | app.adapters.erp_next.adapter:search:152 - Error searching for quotation: No converter found for entity type: quotation
+2025-05-20 22:29:37 | ERROR    | app.api.v1.endpoints.base_endpoint:list_entities_with_filters:146 - Error listing quotations: Failed to search for quotation (System: ERPNext)
+2025-05-20 22:35:31 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:104 - Error converting quotation from erp_next: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+2025-05-20 22:35:31 | ERROR    | app.adapters.erp_next.adapter:search:152 - Error searching for quotation: Failed to convert quotation data: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing (source: erp_next)
+2025-05-20 22:35:31 | ERROR    | app.api.v1.endpoints.base_endpoint:list_entities_with_filters:146 - Error listing quotations: Failed to search for quotation (System: ERPNext)
+2025-05-20 22:35:50 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:104 - Error converting quotation from erp_next: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+2025-05-20 22:35:50 | ERROR    | app.adapters.erp_next.adapter:search:152 - Error searching for quotation: Failed to convert quotation data: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing (source: erp_next)
+2025-05-20 22:35:50 | ERROR    | app.api.v1.endpoints.base_endpoint:list_entities_with_filters:146 - Error listing quotations: Failed to search for quotation (System: ERPNext)
+2025-05-20 22:41:01 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:122 - Validation error: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+2025-05-20 22:41:01 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:129 - Error converting quotation from erp_next: too many values to unpack (expected 2)
+2025-05-20 22:41:01 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:130 - Traceback (most recent call last):
+  File "E:\Work\Shahab\Dev\ERPNext Copilot\integration-middleware\app\core\conversions\quotation_converter.py", line 118, in external_to_standard
+    result = Quotation(**standard_data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\pydantic\main.py", line 164, in __init__
+    __pydantic_self__.__pydantic_validator__.validate_python(data, self_instance=__pydantic_self__)
+pydantic_core._pydantic_core.ValidationError: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Work\Shahab\Dev\ERPNext Copilot\integration-middleware\app\core\conversions\quotation_converter.py", line 124, in external_to_standard
+    for field_name, error in validation_error.errors():
+        ^^^^^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+
+2025-05-20 22:41:01 | ERROR    | app.adapters.erp_next.adapter:search:152 - Error searching for quotation: Failed to convert quotation data: too many values to unpack (expected 2) (source: erp_next)
+2025-05-20 22:41:01 | ERROR    | app.api.v1.endpoints.base_endpoint:list_entities_with_filters:146 - Error listing quotations: Failed to search for quotation (System: ERPNext)
+2025-05-20 22:42:05 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:122 - Validation error: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+2025-05-20 22:42:05 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:129 - Error converting quotation from erp_next: too many values to unpack (expected 2)
+2025-05-20 22:42:05 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:130 - Traceback (most recent call last):
+  File "E:\Work\Shahab\Dev\ERPNext Copilot\integration-middleware\app\core\conversions\quotation_converter.py", line 118, in external_to_standard
+    result = Quotation(**standard_data)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\pydantic\main.py", line 164, in __init__
+    __pydantic_self__.__pydantic_validator__.validate_python(data, self_instance=__pydantic_self__)
+pydantic_core._pydantic_core.ValidationError: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Work\Shahab\Dev\ERPNext Copilot\integration-middleware\app\core\conversions\quotation_converter.py", line 124, in external_to_standard
+    for field_name, error in validation_error.errors():
+        ^^^^^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+
+2025-05-20 22:42:05 | ERROR    | app.adapters.erp_next.adapter:search:152 - Error searching for quotation: Failed to convert quotation data: too many values to unpack (expected 2) (source: erp_next)
+2025-05-20 22:42:05 | ERROR    | app.api.v1.endpoints.base_endpoint:list_entities_with_filters:146 - Error listing quotations: Failed to search for quotation (System: ERPNext)
+2025-05-20 22:54:47 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:122 - Validation error: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+2025-05-20 22:54:47 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:129 - Error converting quotation from erp_next: too many values to unpack (expected 2)
+2025-05-20 22:54:47 | ERROR    | app.core.conversions.quotation_converter:external_to_standard:130 - Traceback (most recent call last):
+  File "E:\Work\Shahab\Dev\ERPNext Copilot\integration-middleware\app\core\conversions\quotation_converter.py", line 118, in external_to_standard
+    # Log validation
+                 ^^^^
+  File "C:\Users\pouri\AppData\Roaming\Python\Python312\site-packages\pydantic\main.py", line 164, in __init__
+    __pydantic_self__.__pydantic_validator__.validate_python(data, self_instance=__pydantic_self__)
+pydantic_core._pydantic_core.ValidationError: 12 validation errors for Quotation
+docstatus
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+order_type
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+company
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+selling_price_list
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+price_list_currency
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+plc_conversion_rate
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+total_qty
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+net_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+base_grand_total
+  Field required [type=missing, input_value={'name': 'Quote-{doc.comp...None, 'enq_det': None}}}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.4/v/missing
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Work\Shahab\Dev\ERPNext Copilot\integration-middleware\app\core\conversions\quotation_converter.py", line 124, in external_to_standard
+    except Exception as validation_error:
+            ^^^^^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+
+2025-05-20 22:54:47 | ERROR    | app.adapters.erp_next.adapter:search:152 - Error searching for quotation: Failed to convert quotation data: too many values to unpack (expected 2) (source: erp_next)
+2025-05-20 22:54:47 | ERROR    | app.api.v1.endpoints.base_endpoint:list_entities_with_filters:146 - Error listing quotations: Failed to search for quotation (System: ERPNext)
