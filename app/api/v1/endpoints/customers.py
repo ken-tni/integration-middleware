@@ -1,8 +1,9 @@
 from typing import Optional, Dict
-from fastapi import Query
+from fastapi import Query, Request, Depends
 from app.schemas.customer import Customer, CustomerResponse, CustomerList
 from app.api.v1.endpoints.base_endpoint import BaseEndpoint
 from app.config.settings import get_setting
+from app.api.v1.dependencies import get_adapter_with_auth
 
 # Get adapter preference for this entity type (allows overriding the global default)
 CUSTOMER_ADAPTER = get_setting("CUSTOMER_ADAPTER", None)
@@ -24,16 +25,21 @@ router = customer_endpoint.router
 # Override the list endpoint to add custom filtering
 @router.get("", response_model=CustomerList)
 async def list_customers(
+    request: Request,
     page: int = Query(1, ge=1, description="Page number"),
     page_size: int = Query(100, ge=1, le=1000, description="Items per page"),
     name: Optional[str] = Query(None, description="Filter by name"),
     status_filter: Optional[str] = Query(None, description="Filter by status"),
     adapter_name: Optional[str] = Query(None, description="Adapter to use (defaults to system default)"),
+    adapter = Depends(get_adapter_with_auth),
 ):
     """
     List customers with optional filtering.
     
     This endpoint retrieves a list of customers from the source system and returns them in the standardized format.
+    
+    - For token-based adapters: No additional authentication needed
+    - For password-based adapters: Include X-Session-ID header with valid session ID
     """
     # Build filter dict
     filters = {}
@@ -41,10 +47,8 @@ async def list_customers(
         filters["name"] = name
     if status_filter is not None:
         filters["status"] = status_filter
-        
-    return await customer_endpoint.list_entities_with_filters(
-        page=page,
-        page_size=page_size,
-        adapter_name=adapter_name,
-        filters=filters,
-    ) 
+    
+    # Use the adapter dependency and don't call list_entities_with_filters directly 
+    # (which would create another dependency chain)
+    result = await adapter.search("customer", filters, page, page_size)
+    return result 

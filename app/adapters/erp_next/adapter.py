@@ -3,7 +3,7 @@ from typing import Dict, Any, List, Optional, TypeVar, Generic, Union
 from app.adapters.erp_next.client import ERPNextClient
 from app.core.adapter import BaseAdapter
 from app.core.conversions.converter_factory import converter_factory
-from app.core.exceptions import EntityNotFoundError, AdapterError
+from app.core.exceptions import EntityNotFoundError, AdapterError, AuthenticationError
 from app.schemas.customer import Customer
 from app.schemas.product import Product
 from app.schemas.quotation import Quotation, QuotationItem
@@ -15,28 +15,76 @@ logger = get_logger("erp_next_adapter")
 
 
 class ERPNextAdapter(BaseAdapter[T]):
-    """Adapter for ERPNext API."""
+    """Adapter for ERPNext API with support for both token and session authentication."""
     
-    def __init__(self, config: Optional[Dict[str, Any]] = None, client: Optional[ERPNextClient] = None):
-        """Initialize the ERPNext adapter.
+    def __init__(
+        self, 
+        config: Optional[Dict[str, Any]] = None,
+        client: Optional[ERPNextClient] = None,
+        session_id: Optional[str] = None,
+        auth_headers: Optional[Dict[str, str]] = None,
+        auth_cookies: Optional[Dict[str, str]] = None
+    ):
+        """Initialize the ERPNext adapter with either token or session authentication.
         
         Args:
             config: Adapter configuration dictionary
             client: Optional ERPNext client instance
+            session_id: Session ID for session-based authentication
+            auth_headers: Authentication headers for session-based authentication
+            auth_cookies: Authentication cookies for session-based authentication
         """
         self.config = config or {}
         self.endpoints = self.config.get("endpoints", {})
-        self.client = client or ERPNextClient(config=self.config)
+        self.auth_method = self.config.get("auth_method", "token")
+        self.adapter_name = "erp_next"
+        
+        # Create client if not provided
+        if not client:
+            self.client = ERPNextClient(
+                config=self.config,
+                session_id=session_id,
+                auth_headers=auth_headers,
+                auth_cookies=auth_cookies
+            )
+        else:
+            self.client = client
+            
+        # Entity type mapping
         self._entity_type_map = self.config.get("entity_map", {
             "customer": "Customer",
             "product": "Item",
             "quotation": "Quotation",
+            "invoice": "Sales Invoice",
         })
     
     async def connect(self) -> None:
         """Initialize connection to ERPNext."""
         # Nothing to do here as the client is already initialized
-        logger.debug("ERPNext adapter connected")
+        logger.debug(f"ERPNext adapter connected using {self.auth_method} authentication")
+    
+    async def authenticate(self, username: str, password: str) -> Dict[str, Any]:
+        """Authenticate with ERPNext using username and password.
+        
+        Args:
+            username: ERPNext username
+            password: ERPNext password
+            
+        Returns:
+            Authentication response with session details
+            
+        Raises:
+            AuthenticationError: If authentication fails
+        """
+        if self.auth_method != "password":
+            logger.warning("authenticate() called but adapter is not in password auth mode")
+            raise AuthenticationError(
+                message="Cannot authenticate: adapter is not in password auth mode",
+                source_system="ERPNext"
+            )
+        
+        # Delegate to client's authenticate method
+        return await self.client.authenticate(username, password)
     
     async def get_by_id(self, entity_type: str, entity_id: str) -> T:
         """Get a single entity by ID from ERPNext.
@@ -121,16 +169,20 @@ class ERPNextAdapter(BaseAdapter[T]):
             # Debug log the raw response
             logger.debug(f"Raw {entity_type} search results from ERPNext: {response}")
             
-            # # Get total count
-            # count_response = await self.client.get(
-            #     f"/api/resource/{erp_entity_type}/count",
-            #     params={"filters": erp_filters},
-            # )
-            # total = count_response.get("count", 0)
-            total = 0
+            # Get total count and items from the response
+            # The response structure might be different based on the ERPNext version
+            items = response.get("items", [])
+            if not items and "data" in response:
+                items = response.get("data", [])
+                
+            # If no items found and data is a dict, check if it has 'items' inside
+            if not items and isinstance(response.get("data"), dict):
+                items = response.get("data", {}).get("items", [])
+                
+            # Get total or use length of items
+            total = response.get("total", len(items))
             
             # Convert to standardized format
-            items = response.get("data", [])
             converted_items = []
             
             for item in items:
@@ -138,15 +190,19 @@ class ERPNextAdapter(BaseAdapter[T]):
                     converter.external_to_standard("erp_next", item)
                 )
             
-            # Return results in the expected format
+            # Return results in the expected format, matching the exact field name expected by the schema
             if entity_type == "customer":
                 return {"total": total, "customers": converted_items}
             elif entity_type == "product":
                 return {"total": total, "products": converted_items}
             elif entity_type == "quotation":
                 return {"total": total, "quotations": converted_items}
+            elif entity_type == "invoice":
+                return {"total": total, "invoices": converted_items}
             else:
-                raise ValueError(f"Unsupported entity type: {entity_type}")
+                # Use a dynamic key for other entity types
+                entity_list_key = f"{entity_type}s"
+                return {"total": total, entity_list_key: converted_items}
         
         except Exception as e:
             logger.error(f"Error searching for {entity_type}: {e}")

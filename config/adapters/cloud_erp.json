@@ -5,6 +5,8 @@
   "base_url": "https://erp.vanishpro.com.au",
   "api_key": "7238530cdd32735",
   "api_secret": "b3f192c025c269a",
+  "auth_endpoint": "/api/auth/login",
+  "auth_method": "token",
   "entity_map": {
     "customer": "Customer",
     "product": "Product",

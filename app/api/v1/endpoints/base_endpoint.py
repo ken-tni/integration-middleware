@@ -6,6 +6,7 @@ from app.core.adapter_factory import adapter_factory
 from app.core.exceptions import EntityNotFoundError, AdapterError
 from app.utils.logging import get_logger
 from app.config.settings import DEFAULT_ADAPTER
+from app.api.v1.dependencies import get_adapter_with_auth
 
 T = TypeVar('T', bound=BaseModel)
 R = TypeVar('R', bound=BaseModel)
@@ -106,15 +107,18 @@ class BaseEndpoint(Generic[T, R, L]):
     
     async def get_entity(
         self,
+        request: Request,
         entity_id: str,
         adapter_name: Optional[str] = None,
+        adapter = Depends(get_adapter_with_auth),
     ):
         """Get an entity by ID."""
         try:
+            # Use the adapter provided by the dependency, which handles
+            # both token and password authentication methods
             adapter_to_use = adapter_name or self.default_adapter
             self.logger.debug(f"Using adapter: {adapter_to_use} to get {self.entity_type} with ID: {entity_id}")
             
-            adapter = await adapter_factory.get_adapter(adapter_to_use)
             entity = await adapter.get_by_id(self.entity_type, entity_id)
             return entity
         except EntityNotFoundError as e:
@@ -126,10 +130,12 @@ class BaseEndpoint(Generic[T, R, L]):
     
     async def list_entities_with_filters(
         self,
+        request: Request,
         page: int = 1,
         page_size: int = 100,
         adapter_name: Optional[str] = None,
         filters: Dict[str, Any] = None,
+        adapter = Depends(get_adapter_with_auth),
     ):
         """List entities with custom filters."""
         try:
@@ -139,7 +145,6 @@ class BaseEndpoint(Generic[T, R, L]):
             adapter_to_use = adapter_name or self.default_adapter
             self.logger.debug(f"Using adapter: {adapter_to_use} to list {self.entity_type}s")
             
-            adapter = await adapter_factory.get_adapter(adapter_to_use)
             result = await adapter.search(self.entity_type, filters, page, page_size)
             return result
         except AdapterError as e:
@@ -148,15 +153,16 @@ class BaseEndpoint(Generic[T, R, L]):
     
     async def create_entity(
         self,
+        request: Request,
         entity: T,
         adapter_name: Optional[str] = None,
+        adapter = Depends(get_adapter_with_auth),
     ):
         """Create a new entity."""
         try:
             adapter_to_use = adapter_name or self.default_adapter
             self.logger.debug(f"Using adapter: {adapter_to_use} to create {self.entity_type}")
             
-            adapter = await adapter_factory.get_adapter(adapter_to_use)
             created_entity = await adapter.create(self.entity_type, entity.dict())
             return created_entity
         except AdapterError as e:
@@ -165,16 +171,17 @@ class BaseEndpoint(Generic[T, R, L]):
     
     async def update_entity(
         self,
+        request: Request,
         entity_id: str,
         entity: T,
         adapter_name: Optional[str] = None,
+        adapter = Depends(get_adapter_with_auth),
     ):
         """Update an entity."""
         try:
             adapter_to_use = adapter_name or self.default_adapter
             self.logger.debug(f"Using adapter: {adapter_to_use} to update {self.entity_type} with ID: {entity_id}")
             
-            adapter = await adapter_factory.get_adapter(adapter_to_use)
             updated_entity = await adapter.update(self.entity_type, entity_id, entity.dict())
             return updated_entity
         except EntityNotFoundError as e:
@@ -186,15 +193,16 @@ class BaseEndpoint(Generic[T, R, L]):
     
     async def delete_entity(
         self,
+        request: Request,
         entity_id: str,
         adapter_name: Optional[str] = None,
+        adapter = Depends(get_adapter_with_auth),
     ):
         """Delete an entity."""
         try:
             adapter_to_use = adapter_name or self.default_adapter
             self.logger.debug(f"Using adapter: {adapter_to_use} to delete {self.entity_type} with ID: {entity_id}")
             
-            adapter = await adapter_factory.get_adapter(adapter_to_use)
             await adapter.delete(self.entity_type, entity_id)
             return None
         except EntityNotFoundError as e:
@@ -203,7 +211,7 @@ class BaseEndpoint(Generic[T, R, L]):
         except AdapterError as e:
             self.logger.error(f"Error deleting {self.entity_type}: {e}")
             raise HTTPException(status_code=502, detail=str(e))
-    
+
     def add_custom_endpoint(
         self,
         path: str,
@@ -211,14 +219,7 @@ class BaseEndpoint(Generic[T, R, L]):
         methods: List[str],
         **kwargs,
     ):
-        """Add a custom endpoint to the router.
-        
-        Args:
-            path: URL path
-            endpoint_func: Function to handle the request
-            methods: HTTP methods
-            **kwargs: Additional parameters for add_api_route
-        """
+        """Add a custom endpoint to the router."""
         self.router.add_api_route(
             path,
             endpoint_func,

@@ -22,6 +22,88 @@ The middleware follows a clean architecture approach:
 - **Core**: Core business logic and interfaces
 - **Utils**: Utility functions for logging, error handling, etc.
 
+## Authentication
+
+The system supports two authentication methods for adapters:
+
+### 1. Token-Based Authentication
+
+Token-based adapters use API keys from the configuration file and don't require user login. This is the default method if not specified.
+
+```json
+{
+  "adapter_name": "token_based_adapter",
+  "auth_method": "token",
+  "api_key": "your_api_key",
+  "api_secret": "your_api_secret"
+}
+```
+
+To use token-based adapters, simply make requests directly to the endpoints:
+
+```bash
+# No authentication headers needed
+curl -X GET http://localhost:8000/api/v1/customers?adapter_name=token_based_adapter
+```
+
+### 2. Password-Based Authentication
+
+Password-based adapters require username and password authentication and maintain a session.
+
+```json
+{
+  "adapter_name": "password_based_adapter",
+  "auth_method": "password", 
+  "auth_endpoint": "/api/method/login"
+}
+```
+
+Working with password-based adapters:
+
+1. First, login to get a session ID:
+
+```bash
+curl -X POST http://localhost:8000/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "adapter_name": "password_based_adapter",
+    "username": "your_username",
+    "password": "your_password",
+    "custom_headers": {
+      "X-Custom-Header": "value"  // Optional
+    }
+  }'
+```
+
+Response:
+```json
+{
+  "status": "success",
+  "message": "Successfully authenticated with password_based_adapter",
+  "adapter_name": "password_based_adapter",
+  "session_id": "user-127.0.0.1"
+}
+```
+
+2. Use the session ID in subsequent requests:
+
+```bash
+curl -X GET http://localhost:8000/api/v1/customers \
+  -H "X-Session-ID: user-127.0.0.1" \
+  -H "X-Adapter-Name: password_based_adapter"
+```
+
+3. Logout when finished:
+
+```bash
+curl -X POST http://localhost:8000/api/v1/auth/logout/password_based_adapter \
+  -H "X-Session-ID: user-127.0.0.1"
+```
+
+## Configuring Adapters
+
+Adapter configurations are stored in JSON files in the `config/adapters/` directory. The system automatically detects the authentication method from the configuration.
+
 ## Getting Started
 
 ### Prerequisites

@@ -23,9 +23,9 @@ class Settings(BaseModel):
     PORT: int = int(os.getenv("PORT", "8000"))
     
     # System A (ERPNext) settings
-    SYSTEM_A_BASE_URL: str = os.getenv("SYSTEM_A_BASE_URL", "")
-    SYSTEM_A_API_KEY: str = os.getenv("SYSTEM_A_API_KEY", "")
-    SYSTEM_A_API_SECRET: str = os.getenv("SYSTEM_A_API_SECRET", "")
+    # SYSTEM_A_BASE_URL: str = os.getenv("SYSTEM_A_BASE_URL", "")
+    # SYSTEM_A_API_KEY: str = os.getenv("SYSTEM_A_API_KEY", "")
+    # SYSTEM_A_API_SECRET: str = os.getenv("SYSTEM_A_API_SECRET", "")
     
     # Retry settings
     MAX_RETRIES: int = int(os.getenv("MAX_RETRIES", "3"))
