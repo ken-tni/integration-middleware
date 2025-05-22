@@ -6,6 +6,7 @@ from app.config.settings import settings
 from app.utils.logging import setup_logging
 from app.utils.exception_handlers import setup_exception_handlers
 from app.core.middleware import AuthenticationMiddleware
+from app.core.middleware.websocket_service import websocket_service
 
 setup_logging()  # Ensure logging is set up first
 from app.core.adapter_factory import adapter_factory  # Import after logging
@@ -29,6 +30,11 @@ def create_application() -> FastAPI:
     
     # Include API router
     app.include_router(api_router, prefix="/api")
+    
+    # Register WebSocket endpoint handlers
+    websocket_service.auto_register_endpoint_modules([
+        "app.api.v1.endpoints.ws_handlers"
+    ])
     
     return app
 
